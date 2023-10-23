@@ -82,6 +82,11 @@
 }
 
 + (UIImage *)coverImage {
+    
+    if (kSize.width <= 0 || kSize.height <= 0) {
+        return nil;
+    }
+    
     static UIImage *image;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -231,6 +236,10 @@
 }
 
 + (UIImage *)coverImage {
+    if (kSize.width <= 0 || kSize.height <= 0) {
+        return 0;
+    }
+    
     static UIImage *image;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

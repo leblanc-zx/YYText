@@ -238,6 +238,10 @@
     CGAffineTransform trans = YYTextCGAffineTransformGetFromViews(hostView, self);
     CGFloat rotation = YYTextCGAffineTransformGetRotation(trans);
     
+    if (mag.bounds.size.width <= 0 || mag.bounds.size.height <= 0) {
+        return 0;
+    }
+    
     if (mag.captureDisabled) {
         if (!mag.snapshot || mag.snapshot.size.width > 1) {
             static UIImage *placeholder;

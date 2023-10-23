@@ -388,6 +388,9 @@ typedef NS_ENUM(NSUInteger, YYTextMoveDirection) {
         YYTextLayout *layout = [YYTextLayout layoutWithContainer:container text:_placeholderAttributedText];
         CGSize size = [layout textBoundingSize];
         BOOL needDraw = size.width > 1 && size.height > 1;
+        if (size.width <= 0 || size.height <= 0) {
+            return;
+        }
         if (needDraw) {
             UIGraphicsBeginImageContextWithOptions(size, NO, 0);
             CGContextRef context = UIGraphicsGetCurrentContext();
